@@ -1,0 +1,22 @@
+F1RACER — como abrir (sem terminal)
+
+COM XAMPP (localhost)
+1. Copie a pasta "raceflix" inteira para dentro de  C:\xampp\htdocs
+2. Abra o XAMPP Control Panel e clique em "Start" no Apache.
+3. No navegador, digite:  localhost/raceflix
+
+SEM XAMPP
+Dê dois cliques no arquivo index.html.
+
+ONDE MEXER
+- js/data.js  : títulos, categorias, carrossel e trailers (e os links das fotos)
+- img/        : coloque aqui suas fotos e use no data.js assim:  image: "img/senna.jpg"
+- css/style.css : cores e visual
+LOGIN, CADASTRO E BANCO (PHP + MySQL)
+1. No XAMPP, inicie Apache e MySQL.
+2. No phpMyAdmin (localhost/phpmyadmin), aba "Importar", importe  sql/usuarios.sql
+   (cria as tabelas "usuarios" e "recuperacao_senha" no banco apexplay_db).
+3. Confira usuário/senha do banco em config/conexao.php.
+4. Páginas: entrar.php (formulário) -> login.php (valida) | cadastro.php | sair.php
+   | esqueceu-senha.php -> redefinir-senha.php (precisa da chave em config/resend.php)
+- Os favoritos ainda ficam salvos só no navegador (localStorage).

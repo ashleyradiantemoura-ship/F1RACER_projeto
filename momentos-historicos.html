@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <title>Momentos Históricos — F1RACER</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .momentos-search {
+            max-width: 760px;
+            margin-bottom: 12px;
+        }
+
+        #pesquisa-momentos {
+            width: 100%;
+            padding: 15px 18px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #141414;
+            color: #fff;
+            font-family: "Outfit", sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        #pesquisa-momentos:focus {
+            border-color: #e10600;
+            box-shadow: 0 0 0 2px rgba(225, 6, 0, 0.15);
+        }
+
+        #pesquisa-momentos::placeholder {
+            color: #888;
+        }
+
+        #resultado-pesquisa {
+            color: var(--muted);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .pesquisa-vazia {
+            grid-column: 1 / -1;
+            padding: 35px 20px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        .pesquisa-vazia h2 {
+            color: #fff;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body data-page="catalogo">
+
+    <div id="site-header"></div>
+
+    <main class="container page-top">
+
+        <p class="eyebrow">Explore a Fórmula 1</p>
+
+        <h1 class="display h1">Momentos Históricos</h1>
+
+        <p style="max-width: 760px; color: var(--muted); margin-bottom: 28px;">
+            Relembre vitórias, rivalidades e decisões que fizeram história.
+            Clique em um card para assistir ao vídeo.
+        </p>
+
+        <!-- Barra de pesquisa -->
+        <div class="momentos-search">
+            <input
+                type="search"
+                id="pesquisa-momentos"
+                placeholder="Pesquisar por Senna, Schumacher, Ferrari..."
+                autocomplete="off"
+                aria-label="Pesquisar momentos históricos"
+            >
+        </div>
+
+        <p id="resultado-pesquisa" aria-live="polite"></p>
+
+        <!-- Cards dos momentos históricos -->
+        <div class="grid grid-main" id="video-grid"></div>
+
+        <div class="back-home">
+            <a href="catalogo.html">← Voltar ao catálogo</a>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        const pageItems = [
+
+            // 1. Ayrton Senna - Mônaco 1984
+            {
+                id: "momento-senna-monaco-1984",
+                category_id: "momentos-historicos",
+                title: "A estreia mágica de Senna sob chuva",
+                badge: "Momento histórico",
+                year: "1984",
+                duration: "Mônaco",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/57/95/1e/57951e3a0edf59ca0a40909650e306a1.jpg",
+                synopsis: "Em sua temporada de estreia, Ayrton Senna brilhou na chuva em Mônaco e se aproximou da vitória antes da interrupção da corrida. Ao volante da Toleman, mostrou controle e velocidade em condições difíceis.",
+                trailer_id: "lorinQQm_rY"
+            },
+
+            // 2. Ayrton Senna - Donington 1993
+            {
+                id: "momento-senna-donington-1993",
+                category_id: "momentos-historicos",
+                title: "A volta mágica de Senna em Donington",
+                badge: "Momento histórico",
+                year: "1993",
+                duration: "Donington Park, Europa",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/83/e2/2b/83e22be6f2dbb97cfce89157ba291a8c.jpg",
+                synopsis: "Na chuva, Senna saiu da quarta posição e assumiu a liderança ainda na primeira volta do GP da Europa. Sua sequência impressionante de ultrapassagens em pista molhada é lembrada até hoje.",
+                trailer_id: "3GOEorrE4mY"
+            },
+
+            // 3. Niki Lauda - Retorno 1976
+            {
+                id: "momento-lauda-retorno-1976",
+                category_id: "momentos-historicos",
+                title: "O retorno de Niki Lauda",
+                badge: "Momento histórico",
+                year: "1976",
+                duration: "Monza, Itália",
+                rating: "4.9",
+                image: "https://i.pinimg.com/1200x/55/8c/fa/558cfaceba6309a14226f3afb7312446.jpg",
+                synopsis: "Poucas semanas após um grave acidente, Niki Lauda voltou a competir no GP da Itália. Seu retorno à Ferrari ficou marcado pela determinação do piloto e pela rapidez com que voltou às pistas.",
+                trailer_id: "BG9zLkF9eVo"
+            },
+
+            // 4. Ayrton Senna - Mônaco 1988
+            {
+                id: "momento-senna-monaco-1988",
+                category_id: "momentos-historicos",
+                title: "O maior erro de Senna",
+                badge: "Momento histórico",
+                year: "1988",
+                duration: "Monte Carlo, Mônaco",
+                rating: "4.9",
+                image: "https://i.pinimg.com/1200x/b3/79/f7/b379f776aa339e4696f861b09aa6464c.jpg",
+                synopsis: "Ayrton Senna cravou a pole position com o tempo de 1:23.998, superando Alain Prost em 1,427 segundos. Após relatar que guiou em estado de transe, Senna liderava a corrida, mas, faltando 11 voltas para o fim, bateu no guard-rail da curva Portier, antes do túnel, mesmo após a equipe pedir que diminuísse o ritmo.",
+                trailer_id: "Y3nnAtVq74o"
+            },
+
+            // 5. Juan Manuel Fangio - Nürburgring 1957
+            {
+                id: "momento-fangio-nurburgring-1957",
+                category_id: "momentos-historicos",
+                title: "A recuperação histórica de Fangio em Nürburgring",
+                badge: "Momento histórico",
+                year: "1957",
+                duration: "Nürburgring, Alemanha",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/1d/cb/f1/1dcbf1dec6563ea57f50c0c6f23a20f9.jpg",
+                synopsis: "Juan Manuel Fangio recuperou quase 50 segundos e conquistou seu quinto título mundial. Após uma parada demorada nos boxes, ele realizou voltas extremamente rápidas e ultrapassagens decisivas na volta final, em uma das atuações mais marcantes de sua carreira.",
+                trailer_id: "YU9N70cNRX4"
+            },
+
+            // 6. Mansell e Senna - Barcelona 1991
+            {
+                id: "momento-mansell-senna-1991",
+                category_id: "momentos-historicos",
+                title: "Mansell e Senna lado a lado",
+                badge: "Momento histórico",
+                year: "1991",
+                duration: "Barcelona, Espanha",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/5e/e1/21/5ee121c7f91f67491a054f4d31359732.jpg",
+                synopsis: "Nigel Mansell e Ayrton Senna disputaram espaço lado a lado na reta principal do circuito espanhol. A cena se tornou uma das imagens mais lembradas da rivalidade esportiva daquela época.",
+                trailer_id: "oa5gP-xscpY"
+            },
+
+            // 7. Michael Schumacher - Ferrari 2000
+            {
+                id: "momento-schumacher-ferrari-2000",
+                category_id: "momentos-historicos",
+                title: "Schumacher encerra o jejum da Ferrari",
+                badge: "Momento histórico",
+                year: "2000",
+                duration: "Suzuka, Japão",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/3b/5e/cb/3b5ecb4953a574128e4a50e0f152747b.jpg",
+                synopsis: "Michael Schumacher venceu o GP do Japão de 2000 e assegurou o campeonato de pilotos, encerrando um longo período sem título para a Ferrari e iniciando uma fase histórica para a equipe.",
+                trailer_id: "hr6g7nLgoPc"
+            },
+
+            // 8. Max Verstappen x Lewis Hamilton - Abu Dhabi 2021
+            {
+                id: "momento-abu-dhabi-2021",
+                category_id: "momentos-historicos",
+                title: "A decisão dramática em Abu Dhabi",
+                badge: "Momento histórico",
+                year: "2021",
+                duration: "Abu Dhabi",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/41/92/5c/41925ca9401301050330a2b54ebd1a13.jpg",
+                synopsis: "Max Verstappen e Lewis Hamilton chegaram à etapa final empatados em pontos. A temporada de 2021 foi decidida em uma última volta controversa, quando Max Verstappen ultrapassou Lewis Hamilton após a relargada. O episódio gerou debates sobre os procedimentos de direção de prova.",
+                trailer_id: "MTe12fH2xtQ"
+            },
+
+            // 9. Rubens Barrichello - Hockenheim 2000
+            {
+                id: "momento-barrichello-hockenheim-2000",
+                category_id: "momentos-historicos",
+                title: "A primeira vitória de Rubens Barrichello",
+                badge: "Momento histórico",
+                year: "2000",
+                duration: "Hockenheim, Alemanha",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/00/bf/47/00bf470a25d238a7325a4de94d030ed9.jpg",
+                synopsis: "Rubens Barrichello conquistou sua primeira vitória na F1. Em uma prova marcada por mudanças climáticas e estratégias de pneus, largando em 18º, Rubens fez uma corrida de recuperação e conquistou sua primeira vitória na Fórmula 1 pela Ferrari.",
+                trailer_id: "96wCoIKgzlI"
+            },
+
+            // 10. GP de San Marino - Ímola 1994
+            {
+                id: "momento-imola-1994",
+                category_id: "momentos-historicos",
+                title: "Um fim de semana que mudou a F1",
+                badge: "Momento histórico",
+                year: "1994",
+                duration: "Ímola, San Marino",
+                rating: "4.9",
+                image: "https://i.pinimg.com/736x/f5/79/de/f579ded3b2e2b1cf18388005a42d7869.jpg",
+                synopsis: "O fim de semana do GP de San Marino de 1994 foi um dos mais tristes da história da categoria. As perdas de Roland Ratzenberger e Ayrton Senna marcaram profundamente a Fórmula 1 e tiveram grande impacto nas discussões e nas melhorias de segurança do automobilismo.",
+                trailer_id: "kmAB-Vo4Tf4"
+            }
+
+        ];
+
+        // Registra os vídeos na lista geral
+        pageItems.forEach(item => {
+            ITEMS[item.id] = item;
+        });
+
+        // Elementos da pesquisa
+        const pesquisaMomentos = document.getElementById("pesquisa-momentos");
+        const videoGrid = document.getElementById("video-grid");
+        const resultadoPesquisa = document.getElementById("resultado-pesquisa");
+
+        // Pesquisa os momentos históricos
+        function pesquisarMomentos() {
+            const termo = pesquisaMomentos.value.trim().toLowerCase();
+
+            // Filtra os cards pelo título, descrição, ano e local
+            const resultados = pageItems.filter(item => {
+                const titulo = (item.title || "").toLowerCase();
+                const descricao = (item.synopsis || "").toLowerCase();
+                const ano = String(item.year || "").toLowerCase();
+                const local = (item.duration || "").toLowerCase();
+
+                return (
+                    titulo.includes(termo) ||
+                    descricao.includes(termo) ||
+                    ano.includes(termo) ||
+                    local.includes(termo)
+                );
+            });
+
+            // Atualiza a quantidade de resultados
+            resultadoPesquisa.textContent =
+                resultados.length +
+                (resultados.length === 1
+                    ? " momento encontrado"
+                    : " momentos encontrados");
+
+            // Exibe mensagem se não houver resultados
+            if (resultados.length === 0) {
+                videoGrid.innerHTML = `
+                    <div class="pesquisa-vazia">
+                        <h2>Nenhum momento encontrado</h2>
+                        <p>Tente pesquisar outro piloto, ano ou circuito.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Cria os cards encontrados
+            videoGrid.innerHTML = resultados
+                .map(item => '<div class="reveal">' + cardHTML(item) + '</div>')
+                .join("");
+
+            // Ativa as animações
+            observeReveals(videoGrid);
+        }
+
+        // Pesquisa enquanto digita
+        pesquisaMomentos.addEventListener("input", pesquisarMomentos);
+
+        // Exibe todos os momentos ao abrir a página
+        pesquisarMomentos();
+    </script>
+
+</body>
+</html>
+

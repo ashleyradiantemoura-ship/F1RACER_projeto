@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <title>Circuitos da Fórmula 1 — F1RACER</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="catalogo">
+
+    <div id="site-header"></div>
+
+    <main class="container page-top">
+        <p class="eyebrow">Explore a Fórmula 1</p>
+
+        <h1 class="display h1">Circuitos da Fórmula 1</h1>
+
+        <p style="max-width:760px;color:var(--muted);margin-bottom:28px">
+            Conheça pistas lendárias, seus traçados e a atmosfera de cada Grande Prêmio. Selecione um card para abrir o vídeo no player.
+        </p>
+
+        <div class="grid grid-main" id="video-grid"></div>
+
+        <div class="back-home">
+            <a href="catalogo.html">← Voltar ao catálogo</a>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+    const pageItems = [
+        {
+            "id": "circuito-interlagos",
+            "category_id": "circuitos",
+            "title": "Autódromo de Interlagos",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "São Paulo, Brasil",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/ec/fc/5a/ecfc5a2e796bab2c9071aa4d56861b79.jpg",
+            "trailer_id": "T5tU_h9Yct0"
+        },
+        {
+            "id": "circuito-monaco",
+            "category_id": "circuitos",
+            "title": "Circuito de Mônaco",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "Monte Carlo, Mônaco",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/1200x/7c/6d/9b/7c6d9bd0e4c238215addcb7ba64d760e.jpg",
+            "synopsis": "Um dos traçados mais técnicos do calendário, com ruas estreitas e margens mínimas para erro.",
+            "trailer_id": "wiB45WnFn20"
+        },
+        {
+            "id": "circuito-spa",
+            "category_id": "circuitos",
+            "title": "Circuito de Spa-Francorchamps",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "Stavelot, Bélgica",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/1200x/44/46/f9/4446f95cd0455520b95a9b1c812825d0.jpg",
+            "synopsis": "Curvas rápidas, mudanças de clima e a lendária sequência Eau Rouge e Raidillon.",
+            "trailer_id": "aehSHw1GIaA"
+        },
+        {
+            "id": "circuito-suzuka",
+            "category_id": "circuitos",
+            "title": "Circuito de Suzuka",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "Suzuka, Japão",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/b0/ae/43/b0ae43b81a2a32abb3ef76533663474d.jpg",
+            "synopsis": "Um circuito em formato de oito, famoso pelas curvas técnicas e por decidir campeonatos.",
+            "trailer_id": "Zng75Wk25p0"
+        },
+        {
+            "id": "circuito-silverstone",
+            "category_id": "circuitos",
+            "title": "Silverstone",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "Silverstone, Reino Unido",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/97/2b/b2/972bb2a1d62c55c704af8f58afef9e5f.jpg",
+            "synopsis": "Pista histórica da Fórmula 1, marcada por sequências de alta velocidade.",
+            "trailer_id": "gG7aN-Q7t6U"
+        },
+        {
+            "id": "circuito-monza",
+            "category_id": "circuitos",
+            "title": "Autódromo de Monza",
+            "badge": "Circuito",
+            "year": "F1",
+            "duration": "Monza, Itália",
+            "rating": "4.9",
+            "image": "https://midias.correiobraziliense.com.br/_midias/jpg/2025/09/01/675x450/1_whatsapp-image-2025-09-01-at-3-34-04-pm-58946989.jpeg",
+            "synopsis": "O Templo da Velocidade: longas retas e frenagens fortes em meio à paixão dos tifosi.",
+            "trailer_id": "Op0Z5Nmfn2s"
+        },
+
+        // NOVOS GRANDES PRÊMIOS
+
+        {
+            "id": "circuito-barcelona",
+            "category_id": "circuitos",
+            "title": "Circuito de Barcelona-Catalunha",
+            "badge": "Grande Prêmio",
+            "year": "F1",
+            "duration": "Montmeló, Espanha",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/1200x/4a/d4/90/4ad4906fee9322b050a06582edfd685d.jpg",
+            "synopsis": "Circuito espanhol conhecido por suas curvas variadas, trechos rápidos e desafios técnicos.",
+            "trailer_id": "5Qe3cVsvrX8"
+        },
+        {
+            "id": "circuito-miami",
+            "category_id": "circuitos",
+            "title": "Circuito de Miami",
+            "badge": "Grande Prêmio",
+            "year": "F1",
+            "duration": "Miami Gardens, Estados Unidos",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/fe/db/13/fedb13eea2479f8f17e935aeee638545.jpg",
+            "synopsis": "Um circuito ao redor do Hard Rock Stadium, com longas retas, curvas técnicas e disputas intensas.",
+            "trailer_id": "_wnz67slT0s"
+        },
+        {
+            "id": "circuito-las-vegas",
+            "category_id": "circuitos",
+            "title": "Circuito de Las Vegas",
+            "badge": "Grande Prêmio",
+            "year": "F1",
+            "duration": "Las Vegas, Estados Unidos",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/60/46/75/60467545c563b9c964fac45adb3450a7.jpg",
+            "synopsis": "Circuito urbano noturno que atravessa a famosa Las Vegas Strip, com retas longas e altas velocidades.",
+            "trailer_id": "2KmEuxzw_HA"
+        },
+        {
+            "id": "circuito-abu-dhabi",
+            "category_id": "circuitos",
+            "title": "Circuito de Yas Marina",
+            "badge": "Grande Prêmio",
+            "year": "F1",
+            "duration": "Abu Dhabi, Emirados Árabes Unidos",
+            "rating": "4.9",
+            "image": "https://i.pinimg.com/736x/20/7d/66/207d66ebf9a4c3efc4aa7079f6c0e4bb.jpg",
+            "synopsis": "Palco da etapa final da temporada, o circuito de Yas Marina combina retas longas e curvas técnicas.",
+            "trailer_id": "TmYFYHrLvq0"
+        }
+    ];
+
+    pageItems.forEach(item => {
+        ITEMS[item.id] = item;
+    });
+
+    document.getElementById('video-grid').innerHTML = pageItems.map(item =>
+        '<div class="reveal">' + cardHTML(item) + '</div>'
+    ).join('');
+
+    observeReveals();
+</script>
+
+</body>
+</html>

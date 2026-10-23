@@ -1,0 +1,397 @@
+/* APEX PLAY | Página de perfil da equipe
+   Carregue depois de css/style.css em equipe.php.
+   Compatível com a estrutura .pilotos-maquina-layout. */
+
+/* Área principal */
+.page-shell {
+    width: min(1220px, 90%);
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-block;
+    margin: 28px 0 18px;
+    color: #c4c6ca;
+    font-size: 12px;
+    text-decoration: none;
+}
+.back-link:hover { color: #e10600; }
+
+/* Cabeçalho da equipe */
+.team-profile-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 64px);
+    padding: 20px 0 42px;
+}
+.team-profile-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #303338;
+    background: #15171a;
+}
+.team-profile-image > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.team-profile-image .profile-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    text-align: center;
+}
+.team-profile-hero .profile-heading { min-width: 0; }
+.team-profile-hero .profile-heading h1 {
+    margin: 0 0 12px;
+    font-size: clamp(42px, 6vw, 76px);
+    overflow-wrap: anywhere;
+}
+.team-profile-hero .profile-subtitle {
+    color: #c0c3c8;
+    font-size: 15px;
+    margin: 0;
+}
+
+/* História e identidade */
+.page-shell > .section { padding: 38px 0 20px; }
+.page-shell > .section .content-panel { min-width: 0; }
+.page-shell > .section .content-panel > p:last-child {
+    color: #c6c8cc;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Linha principal: pilotos à esquerda, máquina à direita */
+.pilotos-maquina-layout {
+    display: grid;
+    grid-template-columns: 573px minmax(0, 1fr);
+    align-items: start;
+    gap: 34px;
+    width: 100%;
+    padding-bottom: 28px;
+}
+.pilotos-maquina-layout > .section {
+    min-width: 0;
+    padding: 38px 0 20px;
+}
+.pilotos-maquina-layout .section-heading { margin-bottom: 20px; }
+.pilotos-maquina-layout .section-heading h2 { margin: 0; }
+
+/* Os dois cards originais dos pilotos */
+.pilotos-maquina-layout .driver-team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px;
+    width: 100%;
+}
+.pilotos-maquina-layout .driver-card {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    background: #15171a;
+    border: 1px solid #25282c;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: transform .22s ease, border-color .22s ease;
+}
+.pilotos-maquina-layout .driver-card:hover {
+    transform: translateY(-4px);
+    border-color: #e10600;
+}
+.pilotos-maquina-layout .driver-image {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: #202226;
+    aspect-ratio: auto;
+}
+.pilotos-maquina-layout .driver-image > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+.pilotos-maquina-layout .driver-image .image-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.pilotos-maquina-layout .number-tag {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    padding: 4px 9px;
+    color: white;
+    background: #e10600;
+    border-radius: 4px;
+}
+.pilotos-maquina-layout .card-content { padding: 20px; }
+.pilotos-maquina-layout .card-content h3 {
+    margin: 0 0 8px;
+    font-size: 23px;
+    overflow-wrap: anywhere;
+}
+.pilotos-maquina-layout .card-content .muted { margin-bottom: 22px; }
+
+/* Card da máquina: compacto, na coluna direita */
+.pilotos-maquina-layout .machine-section { padding-top: 38px; }
+.pilotos-maquina-layout .car-panel {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+    padding: 24px;
+    background: #15171a;
+    border: 1px solid #303338;
+    border-radius: 14px;
+}
+.pilotos-maquina-layout .car-panel .eyebrow { margin: 0 0 12px; }
+.pilotos-maquina-layout .car-panel h2 {
+    margin: 0 0 18px;
+    font-size: clamp(25px, 3vw, 32px);
+    overflow-wrap: anywhere;
+}
+.pilotos-maquina-layout .car-large {
+    display: block;
+    width: 100%;
+    height: 250px;
+    max-height: none;
+    margin: 0 0 18px;
+    border-radius: 12px;
+    object-fit: contain;
+    object-position: center;
+    background: #1c1f23;
+}
+.pilotos-maquina-layout .car-placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 250px;
+    margin: 0 0 18px;
+    padding: 16px;
+    border: 1px dashed #4a4d53;
+    border-radius: 12px;
+    text-align: center;
+}
+.pilotos-maquina-layout .car-panel > p:last-child {
+    margin: 0;
+    color: #c6c8cc;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+/* Telas médias: reduzir colunas antes de empilhar */
+@media (max-width: 1250px) and (min-width: 901px) {
+    .pilotos-maquina-layout {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        gap: 24px;
+    }
+    .pilotos-maquina-layout .driver-team-grid { gap: 14px; }
+    .pilotos-maquina-layout .driver-image { height: 300px; }
+    .pilotos-maquina-layout .card-content { padding: 14px; }
+}
+
+/* Tablet: máquina abaixo dos pilotos quando faltar espaço */
+@media (max-width: 900px) {
+    .pilotos-maquina-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .pilotos-maquina-layout .driver-team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        max-width: 573px;
+    }
+    .pilotos-maquina-layout .machine-section { padding-top: 18px; }
+    .pilotos-maquina-layout .car-panel { max-width: 650px; }
+}
+
+@media (max-width: 720px) {
+    .team-profile-hero { grid-template-columns: 1fr; gap: 24px; }
+    .team-profile-hero .profile-heading h1 { font-size: clamp(38px, 9vw, 60px); }
+    .pilotos-maquina-layout .driver-image { height: 280px; }
+}
+
+@media (max-width: 480px) {
+    .page-shell { width: 92%; }
+    .pilotos-maquina-layout .driver-team-grid { gap: 10px; }
+    .pilotos-maquina-layout .driver-image { height: 220px; }
+    .pilotos-maquina-layout .card-content { padding: 12px; }
+    .pilotos-maquina-layout .card-content h3 { font-size: 18px; }
+    .pilotos-maquina-layout .car-panel { padding: 18px; }
+    .pilotos-maquina-layout .car-large { height: 190px; }
+    .pilotos-maquina-layout .car-placeholder { min-height: 190px; }
+}
+
+/* CARD DA MAQUINA COM A MESMA ALTURA DOS PILOTOS */
+
+.pilotos-maquina-layout {
+    align-items: stretch;
+}
+
+/* FAZER AS DUAS SECOES TEREM A MESMA ALTURA */
+
+.pilotos-maquina-layout > .section {
+    display: flex;
+    flex-direction: column;
+}
+
+/* CARD DA MAQUINA */
+
+.pilotos-maquina-layout .machine-section .car-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+    padding: 30px 28px;
+
+    border-radius: 14px;
+}
+
+/* TITULO */
+
+.pilotos-maquina-layout .car-panel h2 {
+    margin-bottom: 24px;
+}
+
+/* IMAGEM DO CARRO */
+
+.pilotos-maquina-layout .car-large {
+    width: 100%;
+    height: 280px;
+    max-height: none;
+
+    object-fit: contain;
+    object-position: center;
+
+    border-radius: 12px;
+    margin: 0 0 24px;
+}
+
+/* DESCRICAO */
+
+.pilotos-maquina-layout .car-panel p:last-child {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* CELULAR */
+
+@media (max-width: 1100px) {
+    .pilotos-maquina-layout .machine-section .car-panel {
+        height: auto;
+        padding: 24px;
+    }
+
+    .pilotos-maquina-layout .car-large {
+        height: 220px;
+    }
+}
+
+/* FOTO DO CARRO SEM FAIXAS PRETAS */
+
+.pilotos-maquina-layout .car-large {
+    display: block;
+
+    width: 100%;
+    height: 280px;
+    max-height: none;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 12px;
+    margin: 0 0 24px;
+    padding: 0;
+
+    background: transparent;
+}
+
+/* MANTER CARD ALINHADO AOS PILOTOS */
+
+.pilotos-maquina-layout .machine-section .car-panel {
+    flex: 1;
+    height: 100%;
+}
+
+/* ALINHAR O FINAL DO CARD DA MAQUINA
+   COM O FINAL DOS CARDS DOS PILOTOS */
+
+@media (min-width: 1101px) {
+
+    .pilotos-maquina-layout {
+        display: grid;
+        align-items: stretch;
+    }
+
+    .pilotos-maquina-layout > .section {
+        min-height: 0;
+        height: 100%;
+    }
+
+    .pilotos-maquina-layout .machine-section .car-panel {
+        height: 100%;
+        min-height: 0;
+        padding: 22px 26px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* FOTO UM POUCO MENOR */
+    .pilotos-maquina-layout .car-large {
+        height: 245px;
+        max-height: none;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 16px;
+    }
+
+    /* REDUZIR ESPACO DO TITULO */
+    .pilotos-maquina-layout .car-panel h2 {
+        margin-bottom: 14px;
+    }
+
+    /* DESCRICAO MAIS COMPACTA */
+    .pilotos-maquina-layout .car-panel p:last-child {
+        font-size: 13px;
+        line-height: 1.55;
+        margin-bottom: 0;
+    }
+}
+
+/* ESPACAR O TEXTO DA IMAGEM */
+
+.pilotos-maquina-layout .car-large {
+    margin-bottom:60px;
+}
+
+/* MANTER O TEXTO ORGANIZADO */
+.pilotos-maquina-layout .car-panel p:last-child {
+    margin-top: 0;
+    line-height: 1.55;
+}
+
+/* ESPACO ENTRE O TITULO E A FOTO DO CARRO */
+
+.pilotos-maquina-layout .car-panel h2 {
+    margin-bottom: 50px;
+}
